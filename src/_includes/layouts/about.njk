@@ -1,0 +1,19 @@
+---
+layout: layouts/base.njk
+templateClass: tmpl-about
+---
+
+<div class="p-about">
+  <h1 class="p-about_title">{{ about[locale].title | capitalize }}</h1>
+
+  <div role="main" class="c-content">
+    {{ content | safe }}
+  </div>
+  <p style="text-align: center">
+  <a class="c-gradient-link" href="https://github.com/{{ metadata[locale].author.github }}">github</a> |
+  <a class="c-gradient-link" href="https://linkedin.com/in/{{ metadata[locale].author.linkedin }}">linkedin</a> |
+  <a class="c-gradient-link" href="{{ metadata[locale].author.printables }}">printables.com</a> |
+  <a class="c-gradient-link" href="https://twitter.com/{{ metadata[locale].author.twitter }}">twitter</a> |
+  <a class="c-gradient-link" href="mailto:{{ metadata[locale].author.email }}">email</a>
+  </p>
+</div>

@@ -1,0 +1,67 @@
+<footer role="contentinfo" class="c-footer">
+  <div class="c-footer_wrapper">
+    <div class="c-footer_item c-footer_tech">
+      {{ footer[locale].madeWith  }}
+      <a class="c-footer_link" href="https://11ty.dev">
+      11ty
+      </a>
+    </div>
+    <div class="c-footer_item c-footer_author">
+      © {{ metadata[locale].author.name  }}
+    </div>
+    <div class="c-footer_item c-footer_source">
+      <a
+      aria-label="{{ metadata[locale].source.label }}"
+      class="c-footer_link"
+      href="{{ metadata[locale].source.link }}"
+      >
+      {% set label = metadata[locale].source.label %}
+      {% if label == 'github' %}
+      {% include "icons/brand-github.svg" %}
+      {% elif label == 'gitlab' %}
+      {% include "icons/brand-gitlab.svg" %}
+      {% endif %}
+      </a>
+      <a
+      aria-label="{{ metadata[locale].author.printables }}"
+      class="c-footer_link"
+      href="{{ metadata[locale].author.printables }}"
+      >
+      {% set label = metadata[locale].author.printables %}
+      {% if label %}
+      {% include "icons/brand-printables.svg" %}
+      {% endif %}
+      </a>
+      <a
+      aria-label="{{ metadata[locale].author.twitter }}"
+      class="c-footer_link"
+      href="https://twitter.com/{{ metadata[locale].author.twitter }}"
+      >
+      {% set label = metadata[locale].author.twitter %}
+      {% if label %}
+      {% include "icons/brand-twitter.svg" %}
+      {% endif %}
+      </a>
+      <a
+      aria-label="{{ metadata[locale].author.linkedin }}"
+      class="c-footer_link"
+      href="https://linkedin.com/in/{{ metadata[locale].author.linkedin }}"
+      >
+      {% set label = metadata[locale].author.linkedin %}
+      {% if label %}
+      {% include "icons/brand-linkedin.svg" %}
+      {% endif %}
+      </a>
+      <a
+      aria-label="{{ metadata[locale].author.email }}"
+      class="c-footer_link"
+      href="mailto:{{ metadata[locale].author.email }}"
+      >
+      {% set label = metadata[locale].author.email %}
+      {% if label %}
+      {% include "icons/brand-email.svg" %}
+      {% endif %}
+      </a>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,10 @@
+public_html/
+_cache/
+node_modules/
+data/css.json
+
+*.log
+csshash
+data/csshash.json
+data/year.json
+.vscode

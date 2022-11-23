@@ -1,0 +1,43 @@
+{
+  "name": "tompkel-website",
+  "version": "1.0.0",
+  "description": "www.tompkel.net",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rimraf public_html",
+    "hasher": "node bin/csshash.js",
+    "cssmin": "node bin/cssmin.js",
+    "build": "npm-run-all clean hasher -p build:eleventy build:sass",
+    "build:eleventy": "cross-env ELEVENTY_ENV=production eleventy",
+    "build:sass": "sass src/assets/css/index.scss public_html/assets/css/index.css && npm run cssmin",
+    "dev": "npm-run-all clean hasher -p dev:*",
+    "dev:sass": "sass --watch src/assets/css/index.scss public_html/assets/css/index.css",
+    "dev:eleventy": "cross-env ELEVENTY_ENV=development eleventy --serve --port=3000",
+    "debug": "cross-env DEBUG=* eleventy"
+  },
+  "repository": {"type": "git", "url": "git+https://github.com/kellertk/tompkel.net.git"},
+  "homepage": "https://www.tompkel.net/",
+  "author": "Tom Keller <tom@tompkel.net> (https://www.tompkel.net/)",
+  "license": "CC-BY-ND-4.0",
+  "private": "true",
+  "devDependencies": {
+    "@11ty/eleventy": "^1.0.2",
+    "@11ty/eleventy-navigation": "^0.3.2",
+    "@11ty/eleventy-plugin-rss": "^1.1.1",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^3.1.0",
+    "autoprefixer": "^10.2.5",
+    "clean-css": "^5.2.2",
+    "cross-env": "^7.0.3",
+    "luxon": "^2.3.0",
+    "markdown-it": "^12.0.4",
+    "markdown-it-anchor": "^8.4.1",
+    "markdown-it-container": "^3.0.0",
+    "nanoid": "^3.1.30",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2",
+    "sass": "^1.46.0"
+  },
+  "dependencies": {
+    "animejs": "^3.2.1"
+  }
+}
