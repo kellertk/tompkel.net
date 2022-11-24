@@ -10,7 +10,7 @@ eleventyNavigation:
 # hi my name is tom
 
 
-<img style="float: left; margin: 2rem; object-fit: cover; border-radius: 50%; width:200px;" src="/img/headshot.jpg" alt="Headshot of me" />
+<img style="float: left; margin: 2rem; object-fit: cover; border-radius: 50%; width:20%;" src="/img/headshot.jpg" alt="Headshot of me" />
 
 ### i do creative things and sometimes i write code
 
@@ -26,4 +26,4 @@ I'll post about them here sometime.
 
 I have two cats and I live in Seattle, WA.
 
-&nbsp;
+<br clear="left" />
