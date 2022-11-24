@@ -1,0 +1,36 @@
+name: Build and deploy site
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: {}
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: latest
+          cache: 'yarn'
+      - run: |
+          corepack enable
+          yarn install --frozen-lockfile
+          yarn run build
+      - run: bash -c "echo '${{ secrets.KEY }}' > id_rsa && chmod 600 id_rsa"
+      - run: |
+          find public_html -type f > rm-list
+          sed -i rm-list -e 's/^/rm /'
+          echo "rm public_html/assets/css/*" >> rm-list
+          find public_html -type d | awk '{ print length, $0 }' | sort -nr | cut -d" " -f2- > rm-dir
+          sed -i rm-dir -e 's/^/rmdir /'
+      - run: >
+          echo -e "$(cat rm-list)"\\nbye |
+          sftp -q -C -i id_rsa -P ${{ secrets.PORT }} -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }}
+      - run: >
+          echo -e "$(cat rm-dir)"\\nbye |
+          sftp -q -C -i id_rsa -P ${{ secrets.PORT }} -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }}
+      - run: >
+          echo -e "put -R public_html"\\nbye |
+          sftp -q -C -i id_rsa -P ${{ secrets.PORT }} -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }}
