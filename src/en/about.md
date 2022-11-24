@@ -18,7 +18,7 @@ You can find some of the things I've been working on at my GitHub or my
 Printables link below.
 
 I also work in open source, presently for AWS. Other than work in my official
-capacity, which in on GitHub, opinions expressed on this site and my other
+capacity, which is on GitHub, opinions expressed on this site and my other
 online profiles are my own and not necessarily those of my employer. :)
 
 When I'm not writing code I have quite a few hobbies that keep me busy. Maybe
