@@ -8,7 +8,7 @@ const linkIcon = fs.readFileSync(path.join(__dirname, "../src/_includes/icons/li
 
 let markdownLibrary = markdownIt({
   html: true,
-  breaks: true,
+  breaks: false,
   linkify: true,
   typographer: true,
 }).use(markdownItAnchor, {
