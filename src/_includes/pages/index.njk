@@ -9,7 +9,7 @@
     </section>
     <section class="p-index_latest">
         <h2 class="u-mb--16">
-            {% set maxPosts = collections.posts.length | min(1) %}
+            {% set maxPosts = collections.posts.length | min(2) %}
             {{ main[locale].latest | capitalize }}
             {% if maxPosts == 1 %}
                 {{ main[locale].post }}
@@ -18,7 +18,7 @@
             {% endif %}
         </h2>
         <ul class="c-posts-list">
-            {% set postslist = collections.posts | head(1) %}
+            {% set postslist = collections.posts | head(2) %}
             {% include "components/blog-post-items.njk" %}
         </ul>
     </section>

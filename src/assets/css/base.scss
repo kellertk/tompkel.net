@@ -12,7 +12,7 @@ body {
   background-color: var(--color-main);
   min-height: 100vh;
   font-size: var(--text-sm);
-  line-height: 1.5;
+  line-height: 1.7;
 }
 
 .default-layout {
@@ -110,7 +110,7 @@ pre {
   background-color: var(--color-bg);
 }
 code {
-  word-break: break-all;
+  overflow-wrap: break-word;
 }
 
 table {
