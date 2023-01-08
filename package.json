@@ -15,7 +15,10 @@
     "dev:eleventy": "cross-env ELEVENTY_ENV=development eleventy --serve --port=3000",
     "debug": "cross-env DEBUG=* eleventy"
   },
-  "repository": {"type": "git", "url": "git+https://github.com/kellertk/tompkel.net.git"},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kellertk/tompkel.net.git"
+  },
   "homepage": "https://www.tompkel.net/",
   "author": "Tom Keller <tom@tompkel.net> (https://www.tompkel.net/)",
   "license": "CC-BY-ND-4.0",
