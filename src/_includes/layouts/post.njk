@@ -14,7 +14,7 @@ templateClass: tmpl-post
       {{ page.date | en_readableDate }}
     </time>
     <h1 class="p-article_title">{{ title }}</h1>
-    <div class="p-artilce_tags">
+    <div class="p-article_tags">
       {%- for tag in tags | filterTagList -%}
       {%- set tagUrl %}/tags/{{ tag | slug }}/{% endset -%}
       <a href="{{ tagUrl | url }}" class="c-underline-link">{{ tag }}</a>
