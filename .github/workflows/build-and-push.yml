@@ -26,11 +26,11 @@ jobs:
           find public_html -type d | awk '{ print length, $0 }' | sort -nr | cut -d" " -f2- > rm-dir
           sed -i rm-dir -e 's/^/rmdir /'
       - run: >
-          echo -e "$(cat rm-list)"\\nbye |
+          echo -e "cd tompekl.net\\n$(cat rm-list)"\\nbye |
           sftp -q -C -i id_rsa -P ${{ secrets.PORT }} -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }}
       - run: >
-          echo -e "$(cat rm-dir)"\\nbye |
+          echo -e "cd tompkel.net\\n$(cat rm-dir)"\\nbye |
           sftp -q -C -i id_rsa -P ${{ secrets.PORT }} -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }}
       - run: >
-          echo -e "put -R public_html"\\nbye |
+          echo -e "cd tompkel.net\\nput -R public_html"\\nbye |
           sftp -q -C -i id_rsa -P ${{ secrets.PORT }} -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }}
