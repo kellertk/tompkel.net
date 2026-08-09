@@ -5,7 +5,7 @@
   {% set absoluteUrl %}{{ metadata[locale].feed.path | url | absoluteUrl(metadata[locale].url) }}{% endset %}
   <link href="{{ absoluteUrl }}" rel="self"/>
   <link href="{{ metadata[locale].url }}"/>
-  <updated>{{ collections.posts | rssLastUpdatedDate }}</updated>
+  <updated>{{ collections.posts | getNewestCollectionItemDate | dateToRfc3339 }}</updated>
   <id>{{ metadata[locale].feed.id }}</id>
   <author>
     <name>{{ metadata[locale].author.name }}</name>
@@ -16,7 +16,7 @@
   <entry>
     <title>{{ post.data.title }}</title>
     <link href="{{ absolutePostUrl }}"/>
-    <updated>{{ post.date | rssDate }}</updated>
+    <updated>{{ post.date | dateToRfc3339 }}</updated>
     <id>{{ absolutePostUrl }}</id>
     <content type="html">{{ post.templateContent | htmlToAbsoluteUrls(absolutePostUrl) }}</content>
   </entry>

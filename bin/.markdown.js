@@ -1,10 +1,10 @@
-const markdownIt = require("markdown-it");
-const markdownItAnchor = require("markdown-it-anchor");
-// const markdownItContainer = require("markdown-it-container");
-const fs = require("fs");
-const path = require("path");
+import fs from "node:fs";
+import path from "node:path";
+import markdownIt from "markdown-it";
+import markdownItAnchor from "markdown-it-anchor";
+// import markdownItContainer from "markdown-it-container";
 
-const linkIcon = fs.readFileSync(path.join(__dirname, "../src/_includes/icons/link.svg"));
+const linkIcon = fs.readFileSync(path.join(import.meta.dirname, "../src/_includes/icons/link.svg"), "utf8");
 
 let markdownLibrary = markdownIt({
   html: true,
@@ -12,11 +12,12 @@ let markdownLibrary = markdownIt({
   linkify: true,
   typographer: true,
 }).use(markdownItAnchor, {
-  permalink: true,
-  permalinkClass: "direct-link",
-  permalinkSymbol: linkIcon
+  permalink: markdownItAnchor.permalink.linkInsideHeader({
+    class: "direct-link",
+    symbol: linkIcon,
+  })
 });
 
-module.exports = {
+export {
   markdownLibrary
 }

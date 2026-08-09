@@ -1,7 +1,7 @@
 const url = process.env.URL ?? "https://www.tompkel.net";
 const title = "Hello and welcome";
 
-module.exports = {
+export default {
   en: {
     url,
     title,

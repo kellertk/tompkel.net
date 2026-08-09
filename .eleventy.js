@@ -1,18 +1,14 @@
-const { DateTime } = require("luxon");
-const fs = require("fs");
-const pluginRss = require("@11ty/eleventy-plugin-rss");
-const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
-const pluginNavigation = require("@11ty/eleventy-navigation");
-const { markdownLibrary } = require("./bin/.markdown.js");
-const CleanCSS = require('clean-css');
+import { DateTime } from "luxon";
+import pluginRss from "@11ty/eleventy-plugin-rss";
+import pluginSyntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
+import pluginNavigation from "@11ty/eleventy-navigation";
+import { markdownLibrary } from "./bin/.markdown.js";
+import CleanCSS from "clean-css";
 
-module.exports = function(eleventyConfig) {
+export default function(eleventyConfig) {
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(pluginSyntaxHighlight);
   eleventyConfig.addPlugin(pluginNavigation);
-
-  // https://www.11ty.dev/docs/data-deep-merge/
-  eleventyConfig.setDataDeepMerge(true);
 
   eleventyConfig.addLayoutAlias("post", "layouts/post.njk");
 
@@ -76,25 +72,6 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.setLibrary("md", markdownLibrary);
 
-  eleventyConfig.setBrowserSyncConfig({
-    files: '*',
-    ignore: ['public_html', '.gitignore', 'node_modules'],
-    callbacks: {
-      ready: function(err, browserSync) {
-        const content_404 = fs.readFileSync('public_html/404.html');
-
-        browserSync.addMiddleware("*", (req, res) => {
-          // Provides the 404 content without redirect.
-          res.writeHead(404, {"Content-Type": "text/html; charset=UTF-8"});
-          res.write(content_404);
-          res.end();
-        });
-      },
-    },
-    ui: false,
-    ghostMode: false
-  });
-
   return {
     templateFormats: [
       "md",
@@ -105,7 +82,6 @@ module.exports = function(eleventyConfig) {
     pathPrefix: "/",
     markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk",
-    dataTemplateEngine: false,
 
     dir: {
       input: "src",

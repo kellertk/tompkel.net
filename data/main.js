@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   en: {
     welcome: "Hello! And welcome.",
     siteDescription: "<p>I'm Tom. This is my website.</p>",
