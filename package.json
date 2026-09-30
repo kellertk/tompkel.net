@@ -33,7 +33,7 @@
     "clean-css": "^5.3.3",
     "cross-env": "^10.1.0",
     "luxon": "^3.7.2",
-    "markdown-it": "^15.0.0",
+    "markdown-it": "^15.0.1",
     "markdown-it-anchor": "^9.2.1",
     "markdown-it-container": "^4.0.0",
     "nanoid": "^6.0.1",
